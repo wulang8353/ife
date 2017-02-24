@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>正则表达式</title>
+    <link rel="stylesheet" type="text/css" href="../style/bootstrap.min.css">
+    <script type="text/javascript" src="../js/jQuery-2.1.4.min.js"></script>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .page-content {
+        border: 1px solid #ccc;
+        margin: 30px 30px;
+        height: 200px;
+    }
+
+    .header {
+        margin: 0 0 12px;
+        border-bottom: 1px dotted #e2e2e2;
+        padding-top: 7px;
+        padding-bottom: 16px;
+    }
+
+    h1 {
+        margin: 0 8px;
+        font-size: 24px;
+        font-weight: lighter;
+        color: #2679b5;
+    }
+
+    h1 small {
+        margin: 0 6px;
+        font-size: 14px;
+        font-weight: normal;
+        color: #8089a0;
+    }
+
+
+    .form-group label {
+        padding-top: 4px;
+        margin-bottom: 4px;
+        text-align: right;
+    }
+
+    #tip1,#tip2{
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-left: 15px;
+    }
+    </style>
+</head>
+
+<body>
+<div class="page-content">
+
+    <div class="header">
+      <h1>
+        正则表达式
+
+         <small>
+
+           —— 验证电话号码、字符串
+         </small>
+     </h1>
+   </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label class="col-md-6 control-label">请输电话号码</label>
+                    <div class="col-md-6">
+                        <input type="text" name="phone" id="phone" class="phone" maxlength="11">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="tip1"></div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label class="col-md-6 control-label">请输入字符串</label>
+                    <div class="col-md-6">
+                        <input type="text" name="testString" id="testString" class="testString" >
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="tip2"></div>
+
+</div>
+  <script type="text/javascript">
+  // 验证电话号码
+  function testNum(num) {
+      //  匹配13、15、18开头的电话号码
+      var pattern = /^1[358]\d{9}$/;
+
+      if (pattern.test(num)) {
+          return true;
+      } else {
+          return false;
+      }
+  }
+
+  $("#phone").blur("blur", function() {
+      var telphone = $("#phone").val();
+      if (telphone == "") {
+          $("#tip1").html("");
+      } else {
+          if (testNum(telphone)) {
+              $("#tip1").html("<p>true! 格式正确</p>");
+          } else {
+              $("#tip1").html("<p>false 格式错误，再检查检查</p>");
+          }
+      }
+  })
+
+  // 验证字符串
+  function testString(val){
+    var pattern = /\b(\w+)\b\s\1\b/;
+
+     if (pattern.test(val)) {
+          return true;
+      } else {
+          return false;
+      }
+  }
+
+  $("#testString").blur("blur", function() {
+      var word = $("#testString").val();
+      if (word == "") {
+          $("#tip2").html("");
+      } else {
+          if (testString(word)) {
+              $("#tip2").html("<p>true! 格式正确</p>");
+          } else {
+              $("#tip2").html("<p>false 格式错误，再检查检查</p>");
+          }
+      }
+  })
+  </script>
+</body>
+
+</html>
