@@ -37,45 +37,63 @@
         }
 
 
+        /*
+        方法一
+                //   先定义键、值的空数组
+                var city = [];
+                var temp = [];
+                var list = document.getElementById("aqi-list");
 
-        //   先定义键、值的空数组
-        var city = [];
-        var temp = [];
+                //  遍历数组
+                for (var i = 0; i < aqiData.length; i++) {
+                    if (aqiData[i][1] > 60) {
+                        city.push(aqiData[i][0]);
+                        temp.push(aqiData[i][1]);
+                    }
+                }
+
+                // 比较函数
+                function sortNum(value1, value2) {
+                    if (value1 < value2) {
+                        return -1;
+                    }
+                    if (value1 > value1) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                }
+
+                //  创建子节点并插入DOM中
+
+                var arr = temp.sort(sortNum);
+
+                for (var j = 0; j < arr.length; j++) {
+                    var node = document.createElement('li');
+                    var nodeText = document.createTextNode('第' + parseInt(j + 1) + '名：'  + arr[j]);
+                    node.appendChild(nodeText);
+                    list.appendChild(node);
+
+                }*/
+
+        // 方法二
+
         var list = document.getElementById("aqi-list");
+        var content = "";
 
-        //  遍历数组
-        for (var i = 0; i < aqiData.length; i++) {
-            if (aqiData[i][1] > 60) {
-                city.push(aqiData[i][0]);
-                temp.push(aqiData[i][1]);
-            }
-        }
-
-        // 比较函数
-
-        function sortNum(value1, value2) {
-            if (value1 < value2) {
-                return -1;
-            }
-            if (value1 > value1) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-
-        //  创建子节点并插入DOM中
-
-        var arr = temp.sort(sortNum);
+        var arr = aqiData.filter(function(item){
+            return item[1]>60;
+        }).sort(function(num1, num2) {
+            return num2[1] - num1[1];
+        })
 
         for (var j = 0; j < arr.length; j++) {
             var node = document.createElement('li');
-            node.innerHTML = '第' + parseInt(j + 1) + '名：'  + arr[j];
+            var nodeText = document.createTextNode( arr[j][0]+ ' 空气质量为： ' +arr[j][1] + ' 暂居 ' +(j+1)+' 名');
+            node.appendChild(nodeText);
             list.appendChild(node);
 
         }
-
-
 
 
     })();
