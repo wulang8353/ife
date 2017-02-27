@@ -13,6 +13,13 @@
     <button id="button">确认填写</button>
     <div>您输入的值是：<span id="aqi-display">尚无录入</span></div>
 
+    <hr>
+
+    <h3>污染城市列表</h3>
+    <ul id="api-list">
+    </ul>
+    <button id="button">正序</button>
+    <button id="button">反序</button>
     <script type="text/javascript">
     var btn = document.getElementById('button');
     var word = document.getElementById('aqi-input');
@@ -21,6 +28,15 @@
     btn.onclick = function() {
         display.innerHTML = word.value;
     }
+
+    var aqiData = [
+        ["北京", 90],
+        ["上海", 50],
+        ["福州", 10],
+        ["广州", 50],
+        ["成都", 90],
+        ["西安", 100]
+    ];
     </script>
 </body>
 
