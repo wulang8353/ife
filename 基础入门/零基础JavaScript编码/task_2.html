@@ -12,23 +12,11 @@
     </label>
     <button id="button">确认填写</button>
     <div>您输入的值是：<span id="aqi-display">尚无录入</span></div>
-
     <hr>
-
     <h3>污染城市列表</h3>
-    <ul id="api-list">
+    <ul id="aqi-list">
     </ul>
-    <button id="button">正序</button>
-    <button id="button">反序</button>
     <script type="text/javascript">
-    var btn = document.getElementById('button');
-    var word = document.getElementById('aqi-input');
-    var display = document.getElementById('aqi-display');
-
-    btn.onclick = function() {
-        display.innerHTML = word.value;
-    }
-
     var aqiData = [
         ["北京", 90],
         ["上海", 50],
@@ -37,6 +25,60 @@
         ["成都", 90],
         ["西安", 100]
     ];
+
+    (function() {
+
+        var btn = document.getElementById('button');
+        var word = document.getElementById('aqi-input');
+        var display = document.getElementById('aqi-display');
+
+        btn.onclick = function() {
+            display.innerHTML = word.value;
+        }
+
+
+
+        //   先定义键、值的空数组
+        var city = [];
+        var temp = [];
+        var list = document.getElementById("aqi-list");
+
+        //  遍历数组
+        for (var i = 0; i < aqiData.length; i++) {
+            if (aqiData[i][1] > 60) {
+                city.push(aqiData[i][0]);
+                temp.push(aqiData[i][1]);
+            }
+        }
+
+        // 比较函数
+
+        function sortNum(value1, value2) {
+            if (value1 < value2) {
+                return -1;
+            }
+            if (value1 > value1) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+
+        //  创建子节点并插入DOM中
+
+        var arr = temp.sort(sortNum);
+
+        for (var j = 0; j < arr.length; j++) {
+            var node = document.createElement('li');
+            node.innerHTML = '第' + parseInt(j + 1) + '名：'  + arr[j];
+            list.appendChild(node);
+
+        }
+
+
+
+
+    })();
     </script>
 </body>
 
