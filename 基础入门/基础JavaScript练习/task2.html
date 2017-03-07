@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>任务四：基础JavaScript练习（二）</title>
+    <style>
+    #arrayList {
+        margin: 10px 0 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    #arrayList span {
+        margin-right: 10px;
+        padding: 20px 3px;
+        color: #FFFFFF;
+        background-color: #3be;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    #delLeft,
+    #bubble,
+    #random {
+        margin-left: 30px;
+    }
+
+    button {
+        border: 1px solid #eaece9;
+        background: #eee;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="inputBox">
+        <input type="text" id="input">
+        <button id="addLeft">左侧入</button>
+        <button id="addRight">右侧入</button>
+        <button id="delLeft">左侧出</button>
+        <button id="delRight">右侧出</button>
+        <button id="random">随机10组</button>
+        <button id='bubble'>冒泡排序</button>
+        <button id='reverse'>倒序排列</button>
+    </div>
+    <ul id="arrayList">
+    </ul>
+    <script>
+    var input = document.getElementById('input')
+
+    var array = [];
+
+    function getValue() {
+        var value = input.value;
+        if (value == '' || isNaN(value) || value < 10 || value > 100) {
+            alert('请输入10-100之间的数字');
+        } else {
+            return +value;
+        }
+    }
+
+    function buttonHandle(id) {
+        switch (id) {
+            case 'addLeft':
+                getValue() && array.unshift(getValue()) && render();
+                break;
+            case 'addRight':
+                getValue() && array.push(getValue()) && render();
+                break;
+            case 'delLeft':
+                alert('已经在数组中删除数值' + array.shift());
+                render()
+                break;
+            case 'delRight':
+                alert('已经在数组中删除数值' + array.pop());
+                render();
+                break;
+            case 'bubble':
+                bubble();
+                render();
+                break;
+            case 'reverse':
+                reverse();
+                render();
+                break;
+            case 'random':
+                random();
+                render();
+                break;
+        }
+    }
+    //将array数组的数据输出到ul中
+    function render() {
+        var arrayList = document.getElementById('arrayList');
+        arrayList.innerHTML = '';
+        if (arrayList.length > 60) {
+            alert("超过60个就不能再添加了呢")
+        } else {
+            for (var i = 0; i < array.length; i++) {
+                var node = document.createElement("span");
+                node.innerText = array[i];
+                var height = Math.floor(((array[i] - 10) / 90 * 100)) + 'px';
+                node.style.height = height;
+                arrayList.appendChild(node);
+                node.setAttribute("data-index", i);
+
+            }
+        }
+    }
+
+    // 冒泡排序
+    function bubble() {
+        var i, j
+        for (i = 0; i < array.length; i++) {
+            for (j = 0; j < array.length - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    swap(array, j, j + 1);
+                }
+            }
+        }
+        return array;
+    }
+
+    //替换函数
+    function swap(arr, firstIndex, secondIndex) {
+        var temp = arr[firstIndex];
+        arr[firstIndex] = arr[secondIndex];
+        arr[secondIndex] = temp;
+    }
+
+
+    // 倒序
+    function reverse() {
+        var i, j
+        for (i = 0; i < array.length; i++) {
+            for (j = 0; j < array.length - 1; j++) {
+                if (array[j] < array[j + 1]) {
+                    swap(array, j, j + 1);
+                }
+            }
+        }
+        return array;
+    }
+
+    // 随机生成10组数据
+    function random(){
+        var i;
+        if(array.length>60){
+            alert("最多60组哦")
+        }
+        for(i=0;i<10;i++){
+            array.push(Math.floor((Math.random()*8)+2)*10)
+        }
+        return array;
+    }
+
+
+    //利用冒泡原理给button与每个li加上点击事件-
+    function init() {
+        var inputBox = document.getElementById('inputBox');
+        var arrayList = document.getElementById('arrayList');
+        inputBox.addEventListener('click', function(e) {
+            buttonHandle(e.target.id);
+        });
+        arrayList.addEventListener('click', function(e) {
+            var index = parseInt(e.target.dataset.index);
+            array.splice(index, 1);
+            render();
+        });
+    }
+    init();
+    </script>
+</body>
+
+</html>
