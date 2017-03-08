@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>零基础HTML及CSS编码一</title>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: 微软雅黑;
+    }
+
+    body {
+        background: #DCDCDC;
+    }
+
+    header {
+        background-color: rgb(51, 51, 51);
+        padding: 5px;
+    }
+
+    header ul {
+        width: 400px;
+        float: right;
+        margin-right: 10px;
+    }
+
+    header li {
+        float: left;
+        margin-left: 30px;
+        margin-top: 15px;
+    }
+
+    header li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    header li:last-child a {
+        color: gray;
+    }
+
+    header img {
+        width: 135px;
+        height: 50px;
+        margin-left: 50px;
+    }
+
+    article {
+        margin: 20px;
+        padding: 30px 20px;
+        border: 1px solid #eee;
+        box-shadow: 2px 2px 2px #888888;
+        background: #fff;
+        border-radius: 1px;
+        line-height: 1.5em;
+    }
+
+    article h1 {
+        font-weight: 600;
+        font-size: 20px;
+        color: black;
+        margin-bottom: 20px;
+    }
+
+    article h2 {
+        font-size: 15px;
+        color: rgb(104, 101, 127);
+        margin-bottom: 20px;
+    }
+
+    .span {
+        color: rgb(106, 113, 113);
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .indent {
+        margin-top: 15px;
+        text-indent: 2em;
+        line-height: 1.5em;
+    }
+
+    .nav1 {
+        list-style: none;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    figure {
+        padding-left: 35px;
+    }
+
+    .pic {
+        border: 1px solid #eee;
+        width: 120px;
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+
+    .pic figcaption {
+        text-align: center;
+        font-size: 13px;
+        margin-bottom: 5px;
+    }
+
+    .pic img {
+        margin-left: 10px;
+    }
+
+    .nav2 {
+        margin-left: 25px;
+        margin-top: 10px;
+    }
+
+    .nav2 li {
+        list-style: none;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    table {
+        margin-top: 20px;
+        border: 1px solid gray;
+        border-collapse: collapse;
+        width: 100%;
+        font-weight: bold;
+    }
+
+    th {
+        height: 30px;
+        border: 1px solid gainsboro;
+        line-height: 2em;
+        text-align: left;
+        padding: 5px;
+        background-color: black;
+        color: #fff;
+    }
+
+    .sum {
+        background-color: rgb(204, 204, 204);
+    }
+
+    td {
+        text-align: left;
+        padding: 5px;
+        border: 1px solid gainsboro;
+        line-height: 2em;
+    }
+
+    caption {
+        text-align: left;
+    }
+    /*表单*/
+
+    h4 {
+        border-left: 3px solid rgb(204, 204, 204);
+        text-indent: 0.8em;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    form {
+        font-size: .8rem;
+        margin-left: 260px;
+        margin-top: 10px;
+    }
+
+    .address p:first-child>span {
+        float: left;
+    }
+
+    .address input,
+    .password input {
+        width: 127px;
+        height: 20px;
+        border: 1px solid #cccccc;
+        margin-left: 12px;
+    }
+
+    .address input[value="请输入邮箱地址"],
+    .password input[value="请输入密码"] {
+        text-indent: 0.2em;
+        font-size: 10px;
+    }
+
+    .address p:last-child {
+        color: #cccccc;
+        margin-top: 5px;
+        margin-left: 100px;
+    }
+
+    .password {
+        margin-top: 12px;
+    }
+
+    .password p:first-child {
+        margin-left: 24px;
+    }
+
+    .password p:first-child>span {
+        float: left;
+    }
+
+    .password p:nth-child(2)>input {
+        margin-left: 8px;
+    }
+
+    .password p:nth-child(2) {
+        margin-top: 10px;
+    }
+
+    .password p:last-child {
+        color: #cccccc;
+        margin-top: 5px;
+        margin-left: 100px;
+    }
+
+    .sex {
+        margin-left: 60px;
+        margin-top: 10px;
+    }
+
+    .sex input[value="man"] {
+        margin-left: 8px;
+    }
+
+    .sex input[value="woman"] {
+        margin-left: 5px;
+    }
+
+    .city {
+        margin-left: 60px;
+        margin-top: 5px;
+    }
+
+    .city select {
+        border: 1px solid #cccccc;
+        margin-left: 8px;
+    }
+
+    .hobby {
+        margin-left: 60px;
+        margin-top: 12px;
+    }
+
+    .hobby div,
+    .hobbytext {
+        float: left;
+        margin-right: 9px;
+    }
+
+    .describe {
+        clear: both;
+        margin-left: 36px;
+        margin-top: 40px;
+        padding-bottom: 71px;
+        overflow: hidden;
+    }
+
+    .describe span:first-child {
+        display: block;
+        float: left;
+    }
+
+    .describe textarea {
+        width: 763px;
+        height: 98px;
+        border: 1px solid #cccccc;
+        margin-left: 4px;
+        float: left;
+    }
+
+    .describe button {
+        clear: both;
+        position: absolute;
+        left: 50%;
+        margin-left: -600px;
+        margin-top: 111px;
+        width: 1176px;
+        height: 38px;
+        border: 1px solid #cccccc;
+        border-radius: 8px;
+        background-color: #3355d0;
+        color: white;
+        font-size: 15px;
+    }
+
+    footer {
+        text-align: center;
+        background-color: black;
+        color: white;
+        height: 50px;
+        padding-top: 20px;
+        font-size: 15px;
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="./imgs/logo.png">
+        <ul>
+            <li><a href="#">导航链接一</a></li>
+            <li><a href="#">导航链接二</a></li>
+            <li><a href="#">导航链接三</a></li>
+            <li><a href="#">导航链接四</a></li>
+        </ul>
+    </header>
+    <article>
+        <h1>文章一级标题</h1>
+        <h2>文章二级标题</h2>
+        <p><span class="span">文章作者</span> <span>文章发表时间</span></p>
+        <p class="indent">你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！</p>
+        <p>你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！<a href="http://www.bilibili.com/video/av8709991/" target="_blank">你为什么没有对象，还不是因为你长得不好看！</a>你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！</p>
+        <p><img src="./imgs/好看.png" style="width: 300px;height: 300px;"></p>
+        <p class="indent">你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！</p>
+        <p>你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！<a href="http://www.bilibili.com/video/av8709991/" target="_blank">你为什么没有对象，还不是因为你长得不好看！</a>你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！</p>
+    </article>
+    <article>
+        <h1>另一篇文章一级标题</h1>
+        <h2>文章二级标题</h2>
+        <p><span class="span"></span> <span>文章发表时间</span></p>
+        <p class="indent">你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！</p>
+        <p>你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！<a href="http://www.bilibili.com/video/av8709991/" target="_blank">你为什么没有对象，还不是因为你长得不好看！</a>你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！你为什么没有对象，还不是因为你长得不好看！</p>
+        <p><img src="./imgs/3.jpg" style="width: 300px;height: 300px;"></p>
+        <ul class="nav1">
+            <li>导航链接一</li>
+            <li>导航链接二</li>
+            <li>导航链接三</li>
+            <li>导航链接四</li>
+        </ul>
+    </article>
+    <article>
+        <h1>图片</h1>
+        <figure>
+            <div class="pic">
+                <figcaption>好看的图片</figcaption>
+                <img src="./imgs/1.jpg" style="width: 100px;height: 100px;">
+            </div>
+            <div class="pic">
+                <figcaption>好看的图片</figcaption>
+                <img src="./imgs/1.jpg" style="width: 100px;height: 100px;">
+            </div>
+            <div class="pic">
+                <figcaption>好看的图片</figcaption>
+                <img src="./imgs/1.jpg" style="width: 100px;height: 100px;">
+            </div>
+        </figure>
+    </article>
+    <article>
+        <h1>最后一篇文章以及标题</h1>
+        <h2>文章二级标题</h2>
+        <p><span>文章作者</span> <span>文章发表时间</span></p>
+        <div class="nav2">
+            <ul>
+                <li>1、排名1</li>
+                <li>2、排名2</li>
+                <li>3、排名3</li>
+            </ul>
+        </div>
+        <table>
+            <caption>下面是一个表格</caption>
+            <tr>
+                <th>表头</th>
+                <th>表头</th>
+                <th>表头</th>
+            </tr>
+            <tr>
+                <td>表内容单元格</td>
+                <td>表内容单元格</td>
+                <td>操作</td>
+            </tr>
+            <tr>
+                <td>表内容单元格</td>
+                <td>表内容单元格</td>
+                <td>操作</td>
+            </tr>
+            <tr>
+                <td>表内容单元格</td>
+                <td>表内容单元格</td>
+                <td>操作</td>
+            </tr>
+            <tr>
+                <td>表内容单元格</td>
+                <td>表内容单元格</td>
+                <td>操作</td>
+            </tr>
+            <tr class="sum">
+                <td>总计</td>
+                <td colspan="2" align="center">1000</td>
+            </tr>
+        </table>
+    </article>
+    <article>
+        <h4>这是最后一个侧栏，这是侧栏的标题</h4>
+        <form action="#" method="POST">
+            <div class="address">
+                <p>
+                    <span>请输入邮箱地址</span>
+                    <input type="text" value="请输入邮箱地址" />
+                    <br/>
+                </p>
+                <p>邮箱地址请按要求格式输入</p>
+            </div>
+            <div class="password">
+                <p>
+                    <span>请输入密码</span>
+                    <input type="password" value="请输入密码" />
+                </p>
+                <p>
+                    <span>请重复输入密码</span>
+                    <input type="password" value="请输入密码" />
+                </p>
+                <p>密码请为6-16位数字</p>
+            </div>
+            <div class="sex">
+                <span>性别</span>
+                <input type="radio" value="man" checked/>男
+                <input type="radio" value="woman" />女
+            </div>
+            <div class="city">
+                <span>城市</span>
+                <select autofocus="on">
+                    <option>北京</option>
+                    <option>上海</option>
+                </select>
+            </div>
+            <div class="hobby">
+                <span class="hobbytext">爱好</span>
+                <div>
+                    <input type="checkbox" />
+                    <span>运动</span>
+                </div>
+                <div>
+                    <input type="checkbox" />
+                    <span>艺术</span>
+                </div>
+                <div>
+                    <input type="checkbox" />
+                    <span>科学</span>
+                </div>
+            </div>
+            <div class="describe">
+                <span>个人描述</span>
+                <textarea>请输入文字</textarea>
+                <button>确认提交</button>
+            </div>
+        </form>
+    </article>
+    <footer>
+        <p>版权所有@</p>
+    </footer>
+</body>
+
+</html>
