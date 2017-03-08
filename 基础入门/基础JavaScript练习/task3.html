@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>任务四：基础JavaScript练习（三）</title>
+    <style>
+    #arrayList {
+        margin: 10px 0 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    #arrayList span {
+        margin-right: 10px;
+        padding: 8px;
+        color: #FFFFFF;
+        background-color: #3be;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    #delLeft,
+    #bubble,
+    #random {
+        margin-left: 30px;
+    }
+
+    button{
+        border: 1px solid #eaece9;
+        background: #eee;
+        border-radius: 4px;
+        cursor: pointer;
+        vertical-align: top;
+    }
+    input{
+        vertical-align: top;
+    }
+    textarea{
+        resize: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="inputBox">
+            <textarea id="text"  cols="30" rows="2" placeholder="请输入字符"></textarea>
+            <button id="addLeft">左侧入</button>
+            <button id="addRight">右侧入</button>
+            <button id="delLeft">左侧出</button>
+            <button id="delRight">右侧出</button>
+            <input type="text" id="select" placeholder="搜索">
+            <button id='search'>搜索</button>
+    </div>
+    <ul id="arrayList">
+    </ul>
+    <script>
+    var text = document.getElementById('text');
+    var select = document.getElementById('select');
+    var array = [];
+
+    function getValue() {
+        var value = text.value;
+        if (value == "") {
+            alert("输入不能为空哦");
+        }
+        return value;
+    }
+
+    function buttonHandle(id) {
+        switch (id) {
+            case 'addLeft':
+                getValue() && array.unshift(getValue()) && render();
+                break;
+            case 'addRight':
+                getValue() && array.push(getValue()) && render();
+                break;
+            case 'delLeft':
+                alert('已经在数组中删除数值' + array.shift());
+                render()
+                break;
+            case 'delRight':
+                alert('已经在数组中删除数值' + array.pop());
+                render();
+                break;
+            case 'search':
+                search();
+
+                break;
+        }
+    }
+    //将array数组的数据输出到ul中
+    function render() {
+        var arrayList = document.getElementById('arrayList');
+        arrayList.innerHTML = '';
+        if (arrayList.length > 60) {
+            alert("超过60个就不能再添加了呢")
+        } else {
+            for (var i = 0; i < array.length; i++) {
+                var node = document.createElement("span");
+                node.innerText = array[i];
+                arrayList.appendChild(node);
+                node.setAttribute("data-index", i);
+            }
+        }
+    }
+
+    // 搜索函数
+    function search(){
+        var i;
+        var temp=[];
+        var items = select.value;
+        for (i=0;i<array.length;i++){
+            arrayList.childNodes[i].style.color ="#fff";
+            if(array[i].indexOf(items)!=-1){
+                arrayList.childNodes[i].style.color ="#f00";
+                temp.push(array[i]);
+            }
+        }
+        if(!temp.length){
+            alert("没找到哦")
+        }
+    }
+
+
+    //利用冒泡原理给button与每个li加上点击事件-
+    function init() {
+        var inputBox = document.getElementById('inputBox');
+        var arrayList = document.getElementById('arrayList');
+        inputBox.addEventListener('click', function(e) {
+            buttonHandle(e.target.id);
+        });
+        arrayList.addEventListener('click', function(e) {
+            var index = parseInt(e.target.dataset.index);
+            array.splice(index, 1);
+            render();
+        });
+    }
+
+    // 运行
+    init();
+    </script>
+</body>
+
+</html>
