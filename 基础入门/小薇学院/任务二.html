@@ -154,8 +154,8 @@
     caption {
         text-align: left;
     }
-    /*表单*/
 
+    /*表单*/
     h4 {
         border-left: 3px solid rgb(204, 204, 204);
         text-indent: 0.8em;
@@ -187,7 +187,7 @@
         font-size: 10px;
     }
 
-    .address p:last-child {
+    .address p:last-child,.password p:last-child  {
         color: #cccccc;
         margin-top: 5px;
         margin-left: 100px;
@@ -211,12 +211,6 @@
 
     .password p:nth-child(2) {
         margin-top: 10px;
-    }
-
-    .password p:last-child {
-        color: #cccccc;
-        margin-top: 5px;
-        margin-left: 100px;
     }
 
     .sex {
@@ -419,8 +413,8 @@
             </div>
             <div class="sex">
                 <span>性别</span>
-                <input type="radio" value="man" checked/>男
-                <input type="radio" value="woman" />女
+                <input type="radio" value="man"  name="sex" checked/>男
+                <input type="radio" value="woman"  name="sex" />女
             </div>
             <div class="city">
                 <span>城市</span>
