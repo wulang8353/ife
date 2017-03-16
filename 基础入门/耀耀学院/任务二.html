@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>表单（一）单个表单项的检验</title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 16px;
+    }
+
+    .form {
+        width: 800px;
+        height: 800px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .row {
+        width: 100%;
+        margin: 30px 0;
+    }
+
+    label {
+        display: inline-block;
+        width: 100px;
+        text-align: right;
+        font-size: 20px;
+        font-weight: bold;
+        vertical-align: middle;
+        margin-right: 20px;
+    }
+
+    .text {
+        height: 40px;
+        border-radius: 5px;
+        width: 80%;
+        border: 2px solid #ccc;
+        outline: none;
+        text-indent: 1em;
+    }
+
+    input:focus {
+        border-color: rgb(77, 144, 254);
+    }
+
+    .btn {
+        height: 40px;
+        width: 100px;
+        background-color: #2f79ba;
+        color: #fff;
+        font-size: 18px;
+        font-family: "Microsoft Yahei";
+        font-weight: bold;
+        text-align: center;
+        border: 1px solid #2f79ba;
+        border-radius: 5px;
+        cursor: pointer;
+        float: right;
+        margin-right: 16px;
+    }
+
+    .fix:after {
+        content: ".";
+        visibility: hidden;
+        display: block;
+        height: 0;
+        clear: both;
+    }
+    </style>
+</head>
+
+<body>
+    <form class="form fix" action="#" method="get">
+        <div class="row">
+            <label>名称</label>
+            <input type="text" class="text">
+            <span></span>
+        </div>
+        <div class="row">
+            <label>密码</label>
+            <input type="text" class="text">
+            <span></span>
+        </div>
+        <div class="row">
+            <label>密码确认</label>
+            <input type="text" class="text">
+            <span></span>
+        </div>
+        <div class="row">
+            <label>邮箱</label>
+            <input type="text" class="text">
+            <span></span>
+        </div>
+        <div class="row" <label>手机</label>
+            <input type="text" class="text">
+            <span></span>
+        </div>
+        <input type="button" value="提交" id="btn" class="btn">
+    </form>
+    <script type="text/javascript">
+
+
+
+    // 取得输入名字的字长
+    function getNameLength(str) {
+        var zhLen = 0;
+        var enLen = 0;
+
+
+        for (var i of str) {
+            if (isASCII(ch)) {
+                enLen++;
+            } else {
+                zhLen++;
+            }
+        }
+
+        return enLen + zhLen * 2;
+    }
+
+    // 判断是否为ACCII码
+    function isASCII(c) {
+        if (c.charCodeAt(0) >= 0 && c.charCodeAt(0) <= 128) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    </script>
+</body>
+
+</html>
