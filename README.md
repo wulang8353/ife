@@ -9,7 +9,7 @@
 
 * 自定义checkbox， radio样式: [代码](https://github.com/wulang8353/ife/blob/master/promotion/checkbox%2Bradio/index.html) | [预览](https://wulang8353.github.io/ife/promotion/checkbox%2Bradio/index.html)
 
-* 正则表达式之入门: [代码](https://github.com/wulang8353/ife/tree/master/promotion/regularExpression/regularExpression.html) | [预览](https://github.com/wulang8353/ife/tree/master/promotion/regularExpression/regularExpression.html)
+* 正则表达式之入门: [代码](https://github.com/wulang8353/ife/tree/master/promotion/regularExpression/regularExpression.html) | [预览](https://wulang8353.github.io/ife/promotion/regularExpression/regularExpression.html)
 
 ## 小薇学院
 
